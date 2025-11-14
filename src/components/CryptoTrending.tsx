@@ -41,46 +41,43 @@ const CryptoTrending: React.FC<CryptoTrendingProps> = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   // Fetch real-time crypto prices from CoinGecko
-  useEffect(() => {
-    const fetchPrices = async () => {
-      setPricesLoading(true);
-      try {
-        const coinIds = CRYPTO_COINS.map(symbol => COINGECKO_COIN_MAP[symbol]).join(',');
-        const response = await fetch(
-          `https://api.coingecko.com/api/v3/simple/price?ids=${coinIds}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`
-        );
-        const data = await response.json();
+  const fetchPrices = useCallback(async () => {
+    setPricesLoading(true);
+    try {
+      const coinIds = CRYPTO_COINS.map(symbol => COINGECKO_COIN_MAP[symbol]).join(',');
+      const response = await fetch(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${coinIds}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`
+      );
+      const data = await response.json();
 
-        const priceData: Record<string, CryptoPriceData> = {};
-        CRYPTO_COINS.forEach((symbol) => {
-          const coinId = COINGECKO_COIN_MAP[symbol];
-          const coinData = data[coinId];
-          if (coinData) {
-            priceData[symbol] = {
-              symbol,
-              name: symbol,
-              price: coinData.usd || 0,
-              change24h: coinData.usd_24h_change || 0,
-              marketCap: coinData.usd_market_cap,
-              volume24h: coinData.usd_24h_vol,
-            };
-          }
-        });
+      const priceData: Record<string, CryptoPriceData> = {};
+      CRYPTO_COINS.forEach((symbol) => {
+        const coinId = COINGECKO_COIN_MAP[symbol];
+        const coinData = data[coinId];
+        if (coinData) {
+          priceData[symbol] = {
+            symbol,
+            name: symbol,
+            price: coinData.usd || 0,
+            change24h: coinData.usd_24h_change || 0,
+            marketCap: coinData.usd_market_cap,
+            volume24h: coinData.usd_24h_vol,
+          };
+        }
+      });
 
-        setPrices(priceData);
-      } catch {
-        setLocalError('Failed to fetch crypto prices');
-      } finally {
-        setPricesLoading(false);
-      }
-    };
-
-    fetchPrices();
-
-    // Refresh prices every 30 seconds
-    const interval = setInterval(fetchPrices, 30000);
-    return () => clearInterval(interval);
+      setPrices(priceData);
+    } catch {
+      setLocalError('Failed to fetch crypto prices');
+    } finally {
+      setPricesLoading(false);
+    }
   }, []);
+
+  // Fetch prices once when component mounts
+  useEffect(() => {
+    fetchPrices();
+  }, [fetchPrices]);
 
   // Fetch chart data from CoinGecko
   useEffect(() => {
@@ -298,6 +295,14 @@ const CryptoTrending: React.FC<CryptoTrendingProps> = () => {
     <div className="crypto-trending">
       <div className="crypto-header">
         <h2>Crypto Trending</h2>
+        <button 
+          onClick={fetchPrices} 
+          disabled={pricesLoading}
+          className="refresh-prices-btn"
+          title="Refresh prices"
+        >
+          <Repeat size={18} className={pricesLoading ? 'spinner' : ''} />
+        </button>
       </div>
 
       {/* Crypto Prices Bar */}
