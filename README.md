@@ -75,35 +75,6 @@ Output will be in the dist folder
 - Access detailed cluster information for each cryptocurrency
 - Prices update automatically every 30 seconds
 
-## Project Structure
-
-```
-src/
-„¥„Ÿ„Ÿ components/
-„    „¥„Ÿ„Ÿ Login.tsx              # Login component with API key input
-„    „¥„Ÿ„Ÿ Header.tsx             # Header with title and logout button
-„    „¥„Ÿ„Ÿ TabNavigation.tsx      # Tab navigation for 3 main tabs
-„    „¥„Ÿ„Ÿ SearchTab.tsx          # Cluster Search component
-„    „¥„Ÿ„Ÿ CryptoTrending.tsx     # Crypto Trending component with chart
-„    „¤„Ÿ„Ÿ Footer.tsx             # Footer with links
-„¥„Ÿ„Ÿ context/
-„    „¥„Ÿ„Ÿ MembitContext.tsx      # Membit Context API for state management
-„    „¤„Ÿ„Ÿ useMembit.ts           # Custom React hook for Membit operations
-„¥„Ÿ„Ÿ styles/
-„    „¥„Ÿ„Ÿ index.css              # Global styles and CSS variables
-„    „¥„Ÿ„Ÿ Login.css              # Login page styles
-„    „¥„Ÿ„Ÿ Header.css             # Header styles
-„    „¥„Ÿ„Ÿ TabNav.css             # Tab navigation styles
-„    „¥„Ÿ„Ÿ SearchTab.css          # Search tab styles
-„    „¥„Ÿ„Ÿ CryptoTrending.css     # Crypto trending styles with charts
-„    „¥„Ÿ„Ÿ Footer.css             # Footer styles
-„    „¥„Ÿ„Ÿ App.css                # App layout styles
-„    „¤„Ÿ„Ÿ index.css              # Index page styles
-„¥„Ÿ„Ÿ types/
-„    „¤„Ÿ„Ÿ index.ts               # TypeScript interfaces and types
-„¥„Ÿ„Ÿ App.tsx                    # Main App component
-„¤„Ÿ„Ÿ main.tsx                   # React entry point
-```
 
 ## Technologies and Libraries
 
@@ -143,34 +114,11 @@ src/
 
 The interface is designed to match membit.ai branding with a modern dark mode and subtle gradients for a professional research tool appearance.
 
-## API Integration
 
-### Membit Cluster Search API
-Searches for related clusters by keyword using Membit SDK
-```typescript
-const clusters = await client.cluster_search("query", {
-  limit: 10,
-  format: "json"
-});
-```
-Reference: https://docs.membit.ai/cluster-search
-
-### Membit Post Search API
-Searches for posts and articles in the Membit network
-```typescript
-const posts = await client.post_search("query", {
-  limit: 10
-});
-```
-Reference: https://docs.membit.ai/post-search
 
 ### Cryptocurrency Price API
 Fetches live price data for trending cryptocurrencies
-```typescript
-// Fetches prices for: BTC, ETH, BNB, SOL, BAND
-// Updates every 30 seconds
-// Returns: current price, 7-day historical data for charting
-```
+
 
 ## Security
 
@@ -202,10 +150,6 @@ Fetches live price data for trending cryptocurrencies
 - More cryptocurrencies in trending tab
 - Advanced charting options
 
-## License
-
-MIT
-
 ## Support and Documentation
 
 For more information about Membit API and SDK:
@@ -221,5 +165,6 @@ For React and TypeScript documentation:
 ---
 
 Created by hvn_bit
-
 Last Updated: November 2025
+
+## Try now: https://membit-ai-trending.vercel.app/
