@@ -1,6 +1,6 @@
 # Membit Research Tool
 
-A compact research tool using Membit AI SDK to discover the latest information from Membit's APIs and cryptocurrency market data. The application is built with React and TypeScript featuring a modern and user-friendly interface.
+A compact research tool using Membit AI API to discover the latest information from Membit's APIs and cryptocurrency market data. The application is built with React and TypeScript featuring a modern and user-friendly interface.
 
 ## Features
 
@@ -34,6 +34,11 @@ npm install
 ### Run Dev Server
 ```bash
 npm run dev
+```
+
+### Run Proxy Server
+```bash
+npm run proxy
 ```
 
 Application will run at http://localhost:5173/
