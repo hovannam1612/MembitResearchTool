@@ -104,23 +104,6 @@ Output will be in the dist folder
 - **Chart.js** (or Recharts) - For 7-day price charts
 - **Cryptocurrency APIs** - Live price data for BTC, ETH, BNB, SOL, BAND
 
-### Development Tools
-- **ESLint** - Code linting and quality checking
-- **TypeScript Compiler** - Type checking and compilation
-- **npm** - Package management and scripts
-
-## Color Scheme and Design
-
-- Primary Color: number 2563eb (Blue)
-- Secondary Color: number 7c3aed (Purple)
-- Dark Background: number 0f172a
-- Card Background: number 1e293b
-- Gradient: Blue to Purple
-
-The interface is designed to match membit.ai branding with a modern dark mode and subtle gradients for a professional research tool appearance.
-
-
-
 ### Cryptocurrency Price API
 Fetches live price data for trending cryptocurrencies
 
