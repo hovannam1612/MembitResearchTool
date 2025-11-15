@@ -26,7 +26,7 @@ const TabNavigation: React.FC = () => {
       case 'cluster-search':
         return (
           <SearchTab
-            title="Membit Cluster Search"
+            title="Cluster Search"
             placeholder="Enter a keyword to search trending discussion clusters (e.g., artificial intelligence)"
             onSearch={clusterSearch}
           />
@@ -34,7 +34,7 @@ const TabNavigation: React.FC = () => {
       case 'post-search':
         return (
           <SearchTab
-            title="Membit Post Search"
+            title="Post Search"
             placeholder="Enter a keyword to search individual social media posts (e.g., machine learning)"
             onSearch={postSearch}
           />
